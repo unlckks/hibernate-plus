@@ -22,12 +22,15 @@
  */
 package com.baomidou.hibernateplus.utils;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.hibernateplus.condition.DeleteWrapper;
+import com.baomidou.hibernateplus.condition.SelectWrapper;
+import com.baomidou.hibernateplus.condition.UpdateWrapper;
+import com.baomidou.hibernateplus.condition.wrapper.Wrapper;
+import com.baomidou.hibernateplus.entity.Convert;
+import com.baomidou.hibernateplus.entity.EntityInfo;
+import com.baomidou.hibernateplus.entity.page.Page;
+import com.baomidou.hibernateplus.entity.page.Pagination;
+import com.baomidou.hibernateplus.exceptions.HibernatePlusException;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.Function;
 import net.sf.jsqlparser.expression.LongValue;
@@ -39,18 +42,13 @@ import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.Select;
 import net.sf.jsqlparser.statement.select.SelectExpressionItem;
 import net.sf.jsqlparser.statement.select.SelectItem;
-
 import org.hibernate.engine.jdbc.internal.BasicFormatterImpl;
 
-import com.baomidou.hibernateplus.condition.DeleteWrapper;
-import com.baomidou.hibernateplus.condition.SelectWrapper;
-import com.baomidou.hibernateplus.condition.UpdateWrapper;
-import com.baomidou.hibernateplus.condition.wrapper.Wrapper;
-import com.baomidou.hibernateplus.entity.Convert;
-import com.baomidou.hibernateplus.entity.EntityInfo;
-import com.baomidou.hibernateplus.entity.page.Page;
-import com.baomidou.hibernateplus.entity.page.Pagination;
-import com.baomidou.hibernateplus.exceptions.HibernatePlusException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -64,7 +62,7 @@ public class SqlUtils {
 
 	private static final BasicFormatterImpl sqlFormatter = new BasicFormatterImpl();
 	private static final String SQL_COUNT = "SELECT COUNT(0) FROM %s %s";
-	private static final String SQL_BASE_COUNT = "SELECT COUNT(0) FROM ( %s )";
+	private static final String SQL_BASE_COUNT = "SELECT COUNT(0) FROM ( %s ) TOTAL";
 	private static final String SQL_LIST = "SELECT %s FROM %s %s";
 	private static final String SQL_DELETE = "DELETE FROM %s %s";
 	private static final String SQL_UPDATE = "UPDATE %s SET %s %s";
