@@ -22,17 +22,16 @@
  */
 package com.baomidou.hibernateplus.condition;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.baomidou.hibernateplus.entity.EntityInfo;
 import com.baomidou.hibernateplus.entity.page.Page;
 import com.baomidou.hibernateplus.model.AppTestModel;
 import com.baomidou.hibernateplus.utils.EntityInfoUtils;
 import com.baomidou.hibernateplus.utils.SqlUtils;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -69,7 +68,7 @@ public class SqlUtilsTest {
 				.sqlCountOptimize("select distinct * from user a left join (select uuid from user2) b on b.id = a.aid where a=1 order by (select 1 from dual)");
 		System.out.println(countsql);
 		Assert.assertEquals(
-				"SELECT COUNT(0) FROM ( SELECT DISTINCT * FROM user a LEFT JOIN (SELECT uuid FROM user2) b ON b.id = a.aid WHERE a = 1 )",
+				"SELECT COUNT(0) FROM ( SELECT DISTINCT * FROM user a LEFT JOIN (SELECT uuid FROM user2) b ON b.id = a.aid WHERE a = 1 ) TOTAL",
 				countsql);
 	}
 
@@ -83,7 +82,7 @@ public class SqlUtilsTest {
 				.sqlCountOptimize("select * from user a left join (select uuid from user2) b on b.id = a.aid where a=1 group by a.id order by (select 1 from dual)");
 		System.out.println(countsql);
 		Assert.assertEquals(
-				"SELECT COUNT(0) FROM ( SELECT * FROM user a LEFT JOIN (SELECT uuid FROM user2) b ON b.id = a.aid WHERE a = 1 GROUP BY a.id ORDER BY (SELECT 1 FROM dual) )",
+				"SELECT COUNT(0) FROM ( SELECT * FROM user a LEFT JOIN (SELECT uuid FROM user2) b ON b.id = a.aid WHERE a = 1 GROUP BY a.id ORDER BY (SELECT 1 FROM dual) ) TOTAL",
 				countsql);
 	}
 
