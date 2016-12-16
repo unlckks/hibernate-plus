@@ -24,7 +24,7 @@ Hibernate 增强工具包 - 只做增强不做改变，更加精简持久层`CRU
 # 应用实例 | Demo
 
 [Spring-MVC](http://git.oschina.net/baomidou/springmvc-hibernate-plus)
-
+[Spring-Boot](http://git.oschina.net/cancerGit/springboot-hibernateplus-gradle)
 
 # 下载地址 | Download
 
@@ -153,6 +153,10 @@ Hibernate 增强工具包 - 只做增强不做改变，更加精简持久层`CRU
                       expression="execution(* com.baomidou.hibernate.service..*Impl.*(..)) or execution(* com.baomidou.hibernateplus.service..*Impl.*(..))"/>
         <aop:advisor pointcut-ref="slaveTransactionPointcut" advice-ref="slaveTransactionAdvice"/>
     </aop:config>
+
+##Hibernate-Plus - SpringBoot集成
+
+查看[Spring-Boot](http://git.oschina.net/cancerGit/springboot-hibernateplus-gradle)
 
 ###DAO层
 
@@ -302,7 +306,10 @@ Hibernate 增强工具包 - 只做增强不做改变，更加精简持久层`CRU
 
 		...
 
-其他 具体请查看 `示例` 项目  [Spring-MVC](http://git.oschina.net/baomidou/springmvc-hibernate-plus)
+其他 具体请查看 
+
+`示例` 项目1  [Spring-MVC](http://git.oschina.net/baomidou/springmvc-hibernate-plus)
+`示例` 项目2  [Spring-Boot](http://git.oschina.net/cancerGit/springboot-hibernateplus-gradle)
 	
 
 # 其他开源项目 | Other Project
