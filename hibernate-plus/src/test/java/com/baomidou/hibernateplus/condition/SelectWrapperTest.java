@@ -22,7 +22,7 @@
  */
 package com.baomidou.hibernateplus.condition;
 
-import com.baomidou.hibernateplus.enums.SQLlikeType;
+import com.baomidou.hibernateplus.enums.SqlLike;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -309,8 +309,8 @@ public class SelectWrapperTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testlike() {
-		String sqlPart = SelectWrapper.instance().like("default", "default", SQLlikeType.DEFAULT)
-				.like("left", "left", SQLlikeType.LEFT).like("right", "right", SQLlikeType.RIGHT).toString();
+		String sqlPart = SelectWrapper.instance().like("default", "default", SqlLike.DEFAULT)
+				.like("left", "left", SqlLike.LEFT).like("right", "right", SqlLike.RIGHT).toString();
 		System.out.println("sql ==> " + sqlPart);
 		Assert.assertEquals("WHERE (default LIKE '%default%' AND left LIKE '%left' AND right LIKE 'right%')", sqlPart);
 	}

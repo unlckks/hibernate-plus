@@ -22,7 +22,7 @@
  */
 package com.baomidou.hibernateplus.utils;
 
-import com.baomidou.hibernateplus.enums.SQLlikeType;
+import com.baomidou.hibernateplus.enums.SqlLike;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -529,7 +529,7 @@ public class StringUtils {
 	 *            原字符串
 	 * @return
 	 */
-	public static String concatLike(String str, SQLlikeType type) {
+	public static String concatLike(String str, SqlLike type) {
 		switch (type) {
 		case LEFT:
 			str = "%" + str;

@@ -22,7 +22,7 @@
  */
 package com.baomidou.hibernateplus.condition.wrapper;
 
-import com.baomidou.hibernateplus.enums.SQLlikeType;
+import com.baomidou.hibernateplus.enums.SqlLike;
 import com.baomidou.hibernateplus.utils.CollectionUtils;
 import com.baomidou.hibernateplus.utils.StringUtils;
 
@@ -60,7 +60,7 @@ public class SqlPlus extends AbstractSQL<SqlPlus> {
 	 *            like值,无需前后%
 	 * @return
 	 */
-	public SqlPlus LIKE(String column, String value, SQLlikeType type) {
+	public SqlPlus LIKE(String column, String value, SqlLike type) {
 		handerLike(column, value, type, false);
 		return this;
 	}
@@ -75,7 +75,7 @@ public class SqlPlus extends AbstractSQL<SqlPlus> {
 	 * @param type
 	 * @return
 	 */
-	public SqlPlus NOT_LIKE(String column, String value, SQLlikeType type) {
+	public SqlPlus NOT_LIKE(String column, String value, SqlLike type) {
 		handerLike(column, value, type, true);
 		return this;
 	}
@@ -114,7 +114,7 @@ public class SqlPlus extends AbstractSQL<SqlPlus> {
 	 * @param isNot
 	 *            是否为NOT LIKE操作
 	 */
-	private void handerLike(String column, String value, SQLlikeType type, boolean isNot) {
+	private void handerLike(String column, String value, SqlLike type, boolean isNot) {
 		if (StringUtils.isNotBlank(column) && StringUtils.isNotBlank(value)) {
 			StringBuilder inSql = new StringBuilder();
 			inSql.append(column);

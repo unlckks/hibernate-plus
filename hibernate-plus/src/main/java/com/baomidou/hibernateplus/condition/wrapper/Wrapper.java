@@ -22,16 +22,16 @@
  */
 package com.baomidou.hibernateplus.condition.wrapper;
 
+import com.baomidou.hibernateplus.enums.SqlLike;
+import com.baomidou.hibernateplus.utils.MapUtils;
+import com.baomidou.hibernateplus.utils.StringUtils;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
-
-import com.baomidou.hibernateplus.enums.SQLlikeType;
-import com.baomidou.hibernateplus.utils.MapUtils;
-import com.baomidou.hibernateplus.utils.StringUtils;
 
 /**
  * <p>
@@ -351,7 +351,7 @@ public abstract class Wrapper implements Serializable {
 	 * @return this
 	 */
 	public Wrapper like(String column, String value) {
-		sql.LIKE(column, value, SQLlikeType.DEFAULT);
+		sql.LIKE(column, value, SqlLike.DEFAULT);
 		return this;
 	}
 
@@ -365,7 +365,7 @@ public abstract class Wrapper implements Serializable {
 	 * @return this
 	 */
 	public Wrapper notLike(String column, String value) {
-		sql.NOT_LIKE(column, value, SQLlikeType.DEFAULT);
+		sql.NOT_LIKE(column, value, SqlLike.DEFAULT);
 		return this;
 	}
 
@@ -379,7 +379,7 @@ public abstract class Wrapper implements Serializable {
 	 * @param type
 	 * @return this
 	 */
-	public Wrapper like(String column, String value, SQLlikeType type) {
+	public Wrapper like(String column, String value, SqlLike type) {
 		sql.LIKE(column, value, type);
 		return this;
 	}
@@ -394,7 +394,7 @@ public abstract class Wrapper implements Serializable {
 	 * @param type
 	 * @return this
 	 */
-	public Wrapper notLike(String column, String value, SQLlikeType type) {
+	public Wrapper notLike(String column, String value, SqlLike type) {
 		sql.NOT_LIKE(column, value, type);
 		return this;
 	}
