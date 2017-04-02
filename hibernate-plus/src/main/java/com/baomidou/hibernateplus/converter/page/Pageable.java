@@ -1,18 +1,18 @@
 /**
  * The MIT License (MIT)
- *
+ * <p>
  * Copyright (c) 2016 Caratacus
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -40,22 +40,22 @@ public class Pageable implements Serializable {
     /**
      * serialVersionUID
      */
-    private static final long   serialVersionUID = 4060766214127186912L;
+    private static final long serialVersionUID = 4060766214127186912L;
 
     /**
      * 每页显示条数
      */
-    private int                 itemsPerPage     = 20;
+    private int itemsPerPage = 20;
 
     /**
      * 当前页码
      */
-    private int                 curPage          = 1;
+    private int curPage = 1;
 
     /**
      * 关键字
      */
-    private String              keywords;
+    private String keywords;
 
     /**
      * 数据map
@@ -64,7 +64,7 @@ public class Pageable implements Serializable {
 
     /**
      * 放入数据
-     * 
+     *
      * @param key
      * @param obj
      */
@@ -84,7 +84,7 @@ public class Pageable implements Serializable {
 
     /**
      * 获取数据
-     * 
+     *
      * @param key
      * @return
      */
@@ -94,7 +94,7 @@ public class Pageable implements Serializable {
 
     /**
      * 获取数据
-     * 
+     *
      * @param key
      * @param elementType
      * @param <T>
@@ -136,7 +136,7 @@ public class Pageable implements Serializable {
 
     /**
      * 获取指定属性值
-     * 
+     *
      * @param fieldName
      * @return
      */

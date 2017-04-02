@@ -24,122 +24,123 @@ package com.baomidou.hibernateplus.generator.config;
  * @since 2016-12-02
  */
 public class GlobalConfig {
-	/**
-	 * 生成文件的输出目录【默认 D 盘根目录】
-	 */
-	private String outputDir = "D://";
 
-	/**
-	 * 是否覆盖已有文件
-	 */
-	private boolean fileOverride = false;
+    /**
+     * 生成文件的输出目录【默认 D 盘根目录】
+     */
+    private String outputDir = "D://";
 
-	/**
-	 * 是否打开输出目录
-	 */
-	private boolean open = true;
+    /**
+     * 是否覆盖已有文件
+     */
+    private boolean fileOverride = false;
 
-	/**
-	 * 开发人员
-	 */
-	private String author;
+    /**
+     * 是否打开输出目录
+     */
+    private boolean open = true;
 
-	/**
-	 * 各层文件名称方式，例如： %Action 生成 UserAction
-	 */
-	private String poName;
-	private String voName;
-	private String daoName;
-	private String daoImplName;
-	private String serviceName;
-	private String serviceImplName;
-	private String controllerName;
+    /**
+     * 开发人员
+     */
+    private String author;
 
-	public String getOutputDir() {
-		return outputDir;
-	}
+    /**
+     * 各层文件名称方式，例如： %Action 生成 UserAction
+     */
+    private String poName;
+    private String voName;
+    private String daoName;
+    private String daoImplName;
+    private String serviceName;
+    private String serviceImplName;
+    private String controllerName;
 
-	public void setOutputDir(String outputDir) {
-		this.outputDir = outputDir;
-	}
+    public String getOutputDir() {
+        return outputDir;
+    }
 
-	public boolean isFileOverride() {
-		return fileOverride;
-	}
+    public void setOutputDir(String outputDir) {
+        this.outputDir = outputDir;
+    }
 
-	public void setFileOverride(boolean fileOverride) {
-		this.fileOverride = fileOverride;
-	}
+    public boolean isFileOverride() {
+        return fileOverride;
+    }
 
-	public boolean isOpen() {
-		return open;
-	}
+    public void setFileOverride(boolean fileOverride) {
+        this.fileOverride = fileOverride;
+    }
 
-	public void setOpen(boolean open) {
-		this.open = open;
-	}
+    public boolean isOpen() {
+        return open;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public String getDaoName() {
-		return daoName;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public void setDaoName(String daoName) {
-		this.daoName = daoName;
-	}
+    public String getDaoName() {
+        return daoName;
+    }
 
-	public String getDaoImplName() {
-		return daoImplName;
-	}
+    public void setDaoName(String daoName) {
+        this.daoName = daoName;
+    }
 
-	public void setDaoImplName(String daoImplName) {
-		this.daoImplName = daoImplName;
-	}
+    public String getDaoImplName() {
+        return daoImplName;
+    }
 
-	public String getServiceName() {
-		return serviceName;
-	}
+    public void setDaoImplName(String daoImplName) {
+        this.daoImplName = daoImplName;
+    }
 
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
-	}
+    public String getServiceName() {
+        return serviceName;
+    }
 
-	public String getServiceImplName() {
-		return serviceImplName;
-	}
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
 
-	public void setServiceImplName(String serviceImplName) {
-		this.serviceImplName = serviceImplName;
-	}
+    public String getServiceImplName() {
+        return serviceImplName;
+    }
 
-	public String getControllerName() {
-		return controllerName;
-	}
+    public void setServiceImplName(String serviceImplName) {
+        this.serviceImplName = serviceImplName;
+    }
 
-	public void setControllerName(String controllerName) {
-		this.controllerName = controllerName;
-	}
+    public String getControllerName() {
+        return controllerName;
+    }
 
-	public String getVoName() {
-		return voName;
-	}
+    public void setControllerName(String controllerName) {
+        this.controllerName = controllerName;
+    }
 
-	public void setVoName(String voName) {
-		this.voName = voName;
-	}
+    public String getVoName() {
+        return voName;
+    }
 
-	public String getPoName() {
-		return poName;
-	}
+    public void setVoName(String voName) {
+        this.voName = voName;
+    }
 
-	public void setPoName(String poName) {
-		this.poName = poName;
-	}
+    public String getPoName() {
+        return poName;
+    }
+
+    public void setPoName(String poName) {
+        this.poName = poName;
+    }
 }

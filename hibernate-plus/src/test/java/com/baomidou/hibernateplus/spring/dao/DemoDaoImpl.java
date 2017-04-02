@@ -13,13 +13,13 @@ import com.baomidou.hibernateplus.spring.po.Tdemo;
  */
 public class DemoDaoImpl extends DaoImpl<Tdemo> implements DemoDao {
 
-	/**
-	 * 是否获取当前事务的Session
-	 *
-	 * @return
-	 */
-	protected Boolean isCurrent() {
-		return false;
-	}
+    /**
+     * 是否获取当前事务的Session
+     *
+     * @return
+     */
+    protected Boolean isCurrent() {
+        return false;
+    }
 
 }

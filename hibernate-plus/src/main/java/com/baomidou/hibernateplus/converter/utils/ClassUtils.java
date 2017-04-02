@@ -29,7 +29,7 @@ public class ClassUtils {
      * for proper garbage collection in case of multiple class loaders.
      */
     private static final Map<Class<?>, BeanInfo> CLASS_CACHE = Collections
-                                                                 .synchronizedMap(new WeakHashMap<Class<?>, BeanInfo>());
+            .synchronizedMap(new WeakHashMap<Class<?>, BeanInfo>());
 
     /**
      * 获取类本身的BeanInfo，不包含父类属性
@@ -106,7 +106,7 @@ public class ClassUtils {
 
     /**
      * 获取对象指定属性值
-     * 
+     *
      * @param clazz
      * @param obj
      * @param fieldName
@@ -177,7 +177,7 @@ public class ClassUtils {
 
     /**
      * 设置method访问权限
-     * 
+     *
      * @param method
      */
     public static void methodAccessible(Method method) {
@@ -224,8 +224,7 @@ public class ClassUtils {
      */
     public static Class<?> loadClass(String clazz) {
         try {
-            Class<?> loadClass = getDefaultClassLoader().loadClass(clazz);
-            return loadClass;
+            return getDefaultClassLoader().loadClass(clazz);
         } catch (Exception e) {
             throw new HibernatePlusException("根据class名称加载class失败:" + clazz, e);
         }
@@ -233,7 +232,7 @@ public class ClassUtils {
 
     /**
      * 将value的数据类型转换到实际目标类型
-     * 
+     *
      * @param value
      * @return
      */

@@ -26,124 +26,124 @@ import com.baomidou.hibernateplus.utils.StringUtils;
  */
 public class PackageConfig {
 
-	/**
-	 * 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名
-	 */
-	private String parent = "com.baomidou";
+    /**
+     * 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名
+     */
+    private String parent = "com.baomidou";
 
-	/**
-	 * 父包模块名。
-	 */
-	private String moduleName = null;
+    /**
+     * 父包模块名。
+     */
+    private String moduleName = null;
 
-	/**
-	 * Model PO 包名
-	 */
-	private String po = "po";
-	/**
-	 * Model VO 包名
-	 */
-	private String vo = "vo";
+    /**
+     * Model PO 包名
+     */
+    private String po = "po";
+    /**
+     * Model VO 包名
+     */
+    private String vo = "vo";
 
-	/**
-	 * Service包名
-	 */
-	private String service = "service";
+    /**
+     * Service包名
+     */
+    private String service = "service";
 
-	/**
-	 * Service Impl包名
-	 */
-	private String serviceImpl = "service.impl";
-	/**
-	 * Mapper包名
-	 */
-	private String dao = "dao";
+    /**
+     * Service Impl包名
+     */
+    private String serviceImpl = "service.impl";
+    /**
+     * Mapper包名
+     */
+    private String dao = "dao";
 
-	/**
-	 * Mapper XML包名
-	 */
-	private String daoImpl = "dao.impl";
+    /**
+     * Mapper XML包名
+     */
+    private String daoImpl = "dao.impl";
 
-	/**
-	 * Controller包名
-	 */
-	private String controller = "controller";
+    /**
+     * Controller包名
+     */
+    private String controller = "controller";
 
-	public String getParent() {
-		if (StringUtils.isNotBlank(moduleName)) {
-			return parent + "." + moduleName;
-		}
-		return parent;
-	}
+    public String getParent() {
+        if (StringUtils.isNotBlank(moduleName)) {
+            return parent + "." + moduleName;
+        }
+        return parent;
+    }
 
-	public String getModuleName() {
-		return moduleName;
-	}
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
 
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
-	}
+    public String getModuleName() {
+        return moduleName;
+    }
 
-	public String getService() {
-		return service;
-	}
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
 
-	public void setService(String service) {
-		this.service = service;
-	}
+    public String getService() {
+        return service;
+    }
 
-	public String getServiceImpl() {
-		return serviceImpl;
-	}
+    public void setService(String service) {
+        this.service = service;
+    }
 
-	public void setServiceImpl(String serviceImpl) {
-		this.serviceImpl = serviceImpl;
-	}
+    public String getServiceImpl() {
+        return serviceImpl;
+    }
 
-	public void setParent(String parent) {
-		this.parent = parent;
-	}
+    public void setServiceImpl(String serviceImpl) {
+        this.serviceImpl = serviceImpl;
+    }
 
-	public String getController() {
-		if (StringUtils.isBlank(controller)) {
-			return "controller";
-		}
-		return controller;
-	}
+    public String getController() {
+        if (StringUtils.isBlank(controller)) {
+            return "controller";
+        }
+        return controller;
+    }
 
-	public void setController(String controller) {
-		this.controller = controller;
-	}
+    public void setController(String controller) {
+        this.controller = controller;
+    }
 
-	public String getPo() {
-		return po;
-	}
+    public String getPo() {
+        return po;
+    }
 
-	public void setPo(String po) {
-		this.po = po;
-	}
+    public void setPo(String po) {
+        this.po = po;
+    }
 
-	public String getVo() {
-		return vo;
-	}
+    public String getVo() {
+        return vo;
+    }
 
-	public void setVo(String vo) {
-		this.vo = vo;
-	}
+    public void setVo(String vo) {
+        this.vo = vo;
+    }
 
-	public String getDao() {
-		return dao;
-	}
+    public String getDao() {
+        return dao;
+    }
 
-	public void setDao(String dao) {
-		this.dao = dao;
-	}
+    public void setDao(String dao) {
+        this.dao = dao;
+    }
 
-	public String getDaoImpl() {
-		return daoImpl;
-	}
+    public String getDaoImpl() {
+        return daoImpl;
+    }
 
-	public void setDaoImpl(String daoImpl) {
-		this.daoImpl = daoImpl;
-	}
+    public void setDaoImpl(String daoImpl) {
+        this.daoImpl = daoImpl;
+    }
 }

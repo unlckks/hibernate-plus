@@ -33,88 +33,83 @@ import com.baomidou.hibernateplus.generator.config.builder.ConfigBuilder;
  */
 public abstract class AbstractGenerator {
 
-	/**
-	 * 数据源配置
-	 */
-	private DataSourceConfig dataSource;
+    protected ConfigBuilder config;
+    /**
+     * 数据源配置
+     */
+    private DataSourceConfig dataSource;
+    /**
+     * 数据库表配置
+     */
+    private StrategyConfig strategy;
+    /**
+     * 包 相关配置
+     */
+    private PackageConfig packageInfo;
+    /**
+     * 模板 相关配置
+     */
+    private TemplateConfig template;
+    /**
+     * 全局 相关配置
+     */
+    private GlobalConfig globalConfig;
 
-	/**
-	 * 数据库表配置
-	 */
-	private StrategyConfig strategy;
+    /**
+     * 初始化配置
+     */
+    protected void initConfig() {
+        if (null == config) {
+            config = new ConfigBuilder(packageInfo, dataSource, strategy, template, globalConfig);
+        }
+    }
 
-	/**
-	 * 包 相关配置
-	 */
-	private PackageConfig packageInfo;
+    public DataSourceConfig getDataSource() {
+        return dataSource;
+    }
 
-	/**
-	 * 模板 相关配置
-	 */
-	private TemplateConfig template;
+    public void setDataSource(DataSourceConfig dataSource) {
+        this.dataSource = dataSource;
+    }
 
-	/**
-	 * 全局 相关配置
-	 */
-	private GlobalConfig globalConfig;
+    public StrategyConfig getStrategy() {
+        return strategy;
+    }
 
-	protected ConfigBuilder config;
+    public void setStrategy(StrategyConfig strategy) {
+        this.strategy = strategy;
+    }
 
-	/**
-	 * 初始化配置
-	 */
-	protected void initConfig() {
-		if (null == config) {
-			config = new ConfigBuilder(packageInfo, dataSource, strategy, template, globalConfig);
-		}
-	}
+    public PackageConfig getPackageInfo() {
+        return packageInfo;
+    }
 
-	public DataSourceConfig getDataSource() {
-		return dataSource;
-	}
+    public void setPackageInfo(PackageConfig packageInfo) {
+        this.packageInfo = packageInfo;
+    }
 
-	public void setDataSource(DataSourceConfig dataSource) {
-		this.dataSource = dataSource;
-	}
+    public TemplateConfig getTemplate() {
+        return template;
+    }
 
-	public StrategyConfig getStrategy() {
-		return strategy;
-	}
+    public void setTemplate(TemplateConfig template) {
+        this.template = template;
+    }
 
-	public void setStrategy(StrategyConfig strategy) {
-		this.strategy = strategy;
-	}
+    public ConfigBuilder getConfig() {
+        return config;
+    }
 
-	public PackageConfig getPackageInfo() {
-		return packageInfo;
-	}
+    public void setConfig(ConfigBuilder config) {
+        this.config = config;
+    }
 
-	public void setPackageInfo(PackageConfig packageInfo) {
-		this.packageInfo = packageInfo;
-	}
+    public GlobalConfig getGlobalConfig() {
+        return globalConfig;
+    }
 
-	public TemplateConfig getTemplate() {
-		return template;
-	}
-
-	public void setTemplate(TemplateConfig template) {
-		this.template = template;
-	}
-
-	public ConfigBuilder getConfig() {
-		return config;
-	}
-
-	public void setConfig(ConfigBuilder config) {
-		this.config = config;
-	}
-
-	public GlobalConfig getGlobalConfig() {
-		return globalConfig;
-	}
-
-	public void setGlobalConfig(GlobalConfig globalConfig) {
-		this.globalConfig = globalConfig;
-	}
+    public void setGlobalConfig(GlobalConfig globalConfig) {
+        this.globalConfig = globalConfig;
+    }
 
 }

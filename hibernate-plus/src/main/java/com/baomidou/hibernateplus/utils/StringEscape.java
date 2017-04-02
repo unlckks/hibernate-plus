@@ -1,18 +1,18 @@
 /**
  * The MIT License (MIT)
- *
+ * <p>
  * Copyright (c) 2016 Caratacus
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -31,139 +31,140 @@ package com.baomidou.hibernateplus.utils;
  * @Date 2016-10-16
  */
 public class StringEscape {
-	/**
-	 * 字符串是否需要转义
-	 *
-	 * @param str
-	 * @param len
-	 * @return
-	 */
-	private static boolean isEscapeNeededForString(String str, int len) {
 
-		boolean needsHexEscape = false;
+    /**
+     * 字符串是否需要转义
+     *
+     * @param str
+     * @param len
+     * @return
+     */
+    private static boolean isEscapeNeededForString(String str, int len) {
 
-		for (int i = 0; i < len; ++i) {
-			char c = str.charAt(i);
+        boolean needsHexEscape = false;
 
-			switch (c) {
-				case 0: /* Must be escaped for 'mysql' */
+        for (int i = 0; i < len; ++i) {
+            char c = str.charAt(i);
 
-					needsHexEscape = true;
-					break;
+            switch (c) {
+                case 0: /* Must be escaped for 'mysql' */
 
-				case '\n': /* Must be escaped for logs */
-					needsHexEscape = true;
+                    needsHexEscape = true;
+                    break;
 
-					break;
+                case '\n': /* Must be escaped for logs */
+                    needsHexEscape = true;
 
-				case '\r':
-					needsHexEscape = true;
-					break;
+                    break;
 
-				case '\\':
-					needsHexEscape = true;
+                case '\r':
+                    needsHexEscape = true;
+                    break;
 
-					break;
+                case '\\':
+                    needsHexEscape = true;
 
-				case '\'':
-					needsHexEscape = true;
+                    break;
 
-					break;
+                case '\'':
+                    needsHexEscape = true;
 
-				case '"': /* Better safe than sorry */
-					needsHexEscape = true;
+                    break;
 
-					break;
+                case '"': /* Better safe than sorry */
+                    needsHexEscape = true;
 
-				case '\032': /* This gives problems on Win32 */
-					needsHexEscape = true;
-					break;
-			}
+                    break;
 
-			if (needsHexEscape) {
-				break; // no need to scan more
-			}
-		}
-		return needsHexEscape;
-	}
+                case '\032': /* This gives problems on Win32 */
+                    needsHexEscape = true;
+                    break;
+            }
 
-	/**
-	 * 转义字符串
-	 *
-	 * @param escapeStr
-	 * @return
-	 */
-	public static String escapeString(String escapeStr) {
+            if (needsHexEscape) {
+                break; // no need to scan more
+            }
+        }
+        return needsHexEscape;
+    }
 
-		if (escapeStr.matches("\'(.+)\'")) {
-			escapeStr = escapeStr.substring(1, escapeStr.length() - 1);
-		}
+    /**
+     * 转义字符串
+     *
+     * @param escapeStr
+     * @return
+     */
+    public static String escapeString(String escapeStr) {
 
-		String parameterAsString = escapeStr;
-		int stringLength = escapeStr.length();
-		if (isEscapeNeededForString(escapeStr, stringLength)) {
+        if (escapeStr.matches("\'(.+)\'")) {
+            escapeStr = escapeStr.substring(1, escapeStr.length() - 1);
+        }
 
-			StringBuilder buf = new StringBuilder((int) (escapeStr.length() * 1.1));
+        String parameterAsString = escapeStr;
+        int stringLength = escapeStr.length();
+        if (isEscapeNeededForString(escapeStr, stringLength)) {
 
-			//
-			// Note: buf.append(char) is _faster_ than appending in blocks,
-			// because the block append requires a System.arraycopy().... go
-			// figure...
-			//
+            StringBuilder buf = new StringBuilder((int) (escapeStr.length() * 1.1));
 
-			for (int i = 0; i < stringLength; ++i) {
-				char c = escapeStr.charAt(i);
+            //
+            // Note: buf.append(char) is _faster_ than appending in blocks,
+            // because the block append requires a System.arraycopy().... go
+            // figure...
+            //
 
-				switch (c) {
-					case 0: /* Must be escaped for 'mysql' */
-						buf.append('\\');
-						buf.append('0');
+            for (int i = 0; i < stringLength; ++i) {
+                char c = escapeStr.charAt(i);
 
-						break;
+                switch (c) {
+                    case 0: /* Must be escaped for 'mysql' */
+                        buf.append('\\');
+                        buf.append('0');
 
-					case '\n': /* Must be escaped for logs */
-						buf.append('\\');
-						buf.append('n');
+                        break;
 
-						break;
+                    case '\n': /* Must be escaped for logs */
+                        buf.append('\\');
+                        buf.append('n');
 
-					case '\r':
-						buf.append('\\');
-						buf.append('r');
+                        break;
 
-						break;
+                    case '\r':
+                        buf.append('\\');
+                        buf.append('r');
 
-					case '\\':
-						buf.append('\\');
-						buf.append('\\');
+                        break;
 
-						break;
+                    case '\\':
+                        buf.append('\\');
+                        buf.append('\\');
 
-					case '\'':
-						buf.append('\\');
-						buf.append('\'');
+                        break;
 
-						break;
+                    case '\'':
+                        buf.append('\\');
+                        buf.append('\'');
 
-					case '"': /* Better safe than sorry */
-						buf.append('\\');
-						buf.append('"');
+                        break;
 
-						break;
+                    case '"': /* Better safe than sorry */
+                        buf.append('\\');
+                        buf.append('"');
 
-					case '\032': /* This gives problems on Win32 */
-						buf.append('\\');
-						buf.append('Z');
+                        break;
 
-						break;
+                    case '\032': /* This gives problems on Win32 */
+                        buf.append('\\');
+                        buf.append('Z');
 
-					default:
-						buf.append(c);
-				}
-			}
+                        break;
 
-			parameterAsString = buf.toString();
-		}
-		return "\'" + parameterAsString + "\'";
-	}
+                    default:
+                        buf.append(c);
+                }
+            }
+
+            parameterAsString = buf.toString();
+        }
+        return "\'" + parameterAsString + "\'";
+    }
 }

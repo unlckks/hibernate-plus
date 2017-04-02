@@ -1,4 +1,6 @@
-package ${package.ServiceImpl};
+package
+
+    ${package.ServiceImpl};
 
 import ${package.PO}.${po};
 import ${package.VO}.${vo};
@@ -15,6 +17,6 @@ import org.springframework.stereotype.Service;
  * @since ${date}
  */
 @Service
-public class ${table.serviceImplName} extends ${superServiceImplClass}<${po}, ${vo}> implements ${table.serviceName} {
-	
-}
+public class ${table.serviceImplName} extends${superServiceImplClass}<${po}, ${vo}> implements ${table.serviceName} {
+
+        }

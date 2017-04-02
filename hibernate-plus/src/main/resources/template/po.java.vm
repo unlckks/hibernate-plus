@@ -1,12 +1,14 @@
-package ${package.PO};
+package
 
-#if(${superModelClassPackage})
-import ${superModelClassPackage};
-#end
+    ${package.PO};
+
+    #if(${superModelClassPackage})
+    import ${superModelClassPackage};
+    #end
 import com.baomidou.hibernateplus.entity.Convert;
-#if(${table.hasDate})
-import java.util.Date;
-#end
+    #if(${table.hasDate})
+    import java.util.Date;
+    #end
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -32,50 +34,50 @@ import javax.persistence.Table;
 #if(${superModelClass})
 public class ${po} extends ${superModelClass} {
 #else
-public class ${po} extends Convert {
+public class ${po} extends Convert{
 #end
 
-    private static final long serialVersionUID = 1L;
-
-#foreach($field in ${table.fields})
-	/**
-	 * ${field.comment}
-	 */
-	private ${field.propertyType} ${field.propertyName};
-#end
+private static final long serialVersionUID=1L;
 
 #foreach($field in ${table.fields})
-#if(${field.propertyType.equals("Boolean")})
-#set($getprefix="is")
-#else
-#set($getprefix="get")
+/**
+ * ${field.comment}
+ */
+private ${field.propertyType} ${field.propertyName};
 #end
 
-#if(${field.keyFlag})
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-#end
+#foreach($field in ${table.fields})
+    #if(${field.propertyType.equals("Boolean")})
+        #set($getprefix="is")
+    #else
+        #set($getprefix="get")
+    #end
 
-#if(${field.propertyType.equals("Date")})
-	@Temporal(TemporalType.TIMESTAMP)
-#end
-	@Column(name = "${field.name}")
-	public ${field.propertyType} ${getprefix}${field.capitalName}() {
-		return ${field.propertyName};
-	}
+    #if(${field.keyFlag})
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    #end
 
-	public void set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
-		this.${field.propertyName} = ${field.propertyName};
-#if(${modelBuliderModel})
-		return this;
-#end
-	}
+    #if(${field.propertyType.equals("Date")})
+    @Temporal(TemporalType.TIMESTAMP)
+    #end
+@Column(name = "${field.name}")
+public ${field.propertyType} ${getprefix}${field.capitalName}(){
+        return ${field.propertyName};
+        }
+
+public void set${field.capitalName}(${field.propertyType} ${field.propertyName}){
+        this.${field.propertyName} = ${field.propertyName};
+    #if(${modelBuliderModel})
+            return this;
+    #end
+        }
 #end
 
 #if(${modelColumnConstant})
-#foreach($field in ${table.fields})
-	public static final String ${field.name.toUpperCase()} = "${field.name}";
+    #foreach($field in ${table.fields})
+    public static final String ${field.name.toUpperCase()} = "${field.name}";
 
+    #end
 #end
-#end
-}
+        }

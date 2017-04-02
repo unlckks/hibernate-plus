@@ -1,18 +1,18 @@
 /**
  * The MIT License (MIT)
- *
+ * <p>
  * Copyright (c) 2016 Caratacus
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -42,15 +42,15 @@ public class BeanConverterConfig {
     /** 包含 BeanConverter 的 ContextClassLoader 实例索引 */
     private static final ContextClassLoaderLocal BEANS_BY_CLASSLOADER = new ContextClassLoaderLocal() {
 
-                                                                               // 创建默认的实例
-                                                                               protected Object initialValue() {
-                                                                                   return new BeanConverterConfig();
-                                                                               }
-                                                                           };
+        // 创建默认的实例
+        protected Object initialValue() {
+            return new BeanConverterConfig();
+        }
+    };
 
     /** 对象的转换器 */
-    private SoftReference<Map<String, TypeConverter>> converters           = new SoftReference<Map<String, TypeConverter>>(
-                                                                               new HashMap<String, TypeConverter>());
+    private SoftReference<Map<String, TypeConverter>> converters = new SoftReference<Map<String, TypeConverter>>(
+            new HashMap<String, TypeConverter>());
 
     /**
      * 获取实例，提供的功能应用于 {@link BeanConverter}.
@@ -60,8 +60,7 @@ public class BeanConverterConfig {
      * @return 该伪单例的实例 BeanConverterConfig
      */
     public static BeanConverterConfig getInstance() {
-        BeanConverterConfig beanConverterConfig = (BeanConverterConfig) BEANS_BY_CLASSLOADER.get();
-        return beanConverterConfig;
+        return (BeanConverterConfig) BEANS_BY_CLASSLOADER.get();
     }
 
     /**
@@ -77,7 +76,7 @@ public class BeanConverterConfig {
 
     /**
      * 获取转换器key
-     * 
+     *
      * @param sourceClass
      * @param targetClass
      * @return
@@ -97,7 +96,7 @@ public class BeanConverterConfig {
             converters = new SoftReference<Map<String, TypeConverter>>(map = new HashMap<String, TypeConverter>());
         }
         map.put(BeanConverterConfig.getCovertKey(converter.getSourceTypeClass(), converter.getTargetTypeClass()),
-            converter);
+                converter);
     }
 
     /**
@@ -116,7 +115,7 @@ public class BeanConverterConfig {
 
     /**
      * 获取所有转换器
-     * 
+     *
      * @return
      */
     public Map<String, TypeConverter> getConverters() {

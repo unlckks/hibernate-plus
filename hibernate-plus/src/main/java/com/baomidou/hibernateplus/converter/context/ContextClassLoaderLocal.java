@@ -1,18 +1,18 @@
 /**
  * The MIT License (MIT)
- *
+ * <p>
  * Copyright (c) 2016 Caratacus
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -85,13 +85,13 @@ import java.util.WeakHashMap;
 public class ContextClassLoaderLocal {
 
     /** 保存实际实例的数据信息 */
-    private Map<ClassLoader, Object> valueByClassLoader     = new WeakHashMap<ClassLoader, Object>();
+    private final Map<ClassLoader, Object> valueByClassLoader = new WeakHashMap<ClassLoader, Object>();
 
     /** 全局初始值初始化标记 */
-    private boolean                  globalValueInitialized = false;
+    private boolean globalValueInitialized = false;
 
     /** 全局初始值 */
-    private Object                   globalValue;
+    private Object globalValue;
 
     /**
      * 构造方法
@@ -144,7 +144,7 @@ public class ContextClassLoaderLocal {
 
             }
 
-        } catch (SecurityException e) {
+        } catch (SecurityException ignored) {
         }
 
         // 出现异常，返回全局变量值
@@ -175,7 +175,7 @@ public class ContextClassLoaderLocal {
                 return;
             }
 
-        } catch (SecurityException e) {
+        } catch (SecurityException ignored) {
         }
 
         //如有异常，设置全局值
@@ -198,7 +198,7 @@ public class ContextClassLoaderLocal {
 
     /**
      * 卸载当前线程ContextClassLoader关联的对象
-     * 
+     *
      * @param classLoader 需要卸载的ClassLoader
      */
     public synchronized void unset(ClassLoader classLoader) {

@@ -23,16 +23,16 @@ package com.baomidou.hibernateplus.generator.config.rules;
  */
 public enum DbType {
 
-	MYSQL("myslq"), ORACLE("oracle");
+    MYSQL("myslq"), ORACLE("oracle");
 
-	private String value;
+    private final String value;
 
-	DbType(String value) {
-		this.value = value;
-	}
+    DbType(String value) {
+        this.value = value;
+    }
 
-	public String getValue() {
-		return value;
-	}
+    public String getValue() {
+        return value;
+    }
 
 }

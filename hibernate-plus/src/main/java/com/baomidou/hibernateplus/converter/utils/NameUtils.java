@@ -38,10 +38,10 @@ public class NameUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(NameUtils.getCamelName("login-name-info",'-'));
-        System.out.println(NameUtils.getCamelName("LOGIN-NAME-INFO",'-'));
-        System.out.println(NameUtils.getCamelName("-login-name-info-",'-'));
-        System.out.println(NameUtils.getCamelName("-LOGIN-NAME-INFO-",'-'));
+        System.out.println(NameUtils.getCamelName("login-name-info", '-'));
+        System.out.println(NameUtils.getCamelName("LOGIN-NAME-INFO", '-'));
+        System.out.println(NameUtils.getCamelName("-login-name-info-", '-'));
+        System.out.println(NameUtils.getCamelName("-LOGIN-NAME-INFO-", '-'));
     }
 
     /**
@@ -162,8 +162,7 @@ public class NameUtils {
 
         int index = StrUtils.lastIndexOf(fileName, ".");
         String suffix = StrUtils.substring(fileName, index);
-        String uqName = UUIDUtils.getUUID16() + suffix;
-        return uqName;
+        return UUIDUtils.getUUID16() + suffix;
     }
 
     /**

@@ -108,7 +108,7 @@ public class StrUtils {
             return true;
         }
         for (int i = 0; i < strLen; i++) {
-            if (Character.isWhitespace(str.charAt(i)) == false) {
+            if (!Character.isWhitespace(str.charAt(i))) {
                 return false;
             }
         }
@@ -865,10 +865,7 @@ public class StrUtils {
      * @since 2.0
      */
     public static boolean contains(String str, char searchChar) {
-        if (isEmpty(str)) {
-            return false;
-        }
-        return str.indexOf(searchChar) >= 0;
+        return !isEmpty(str) && str.indexOf(searchChar) >= 0;
     }
 
     /**
@@ -893,10 +890,7 @@ public class StrUtils {
      * @since 2.0
      */
     public static boolean contains(String str, String searchStr) {
-        if (str == null || searchStr == null) {
-            return false;
-        }
-        return str.indexOf(searchStr) >= 0;
+        return !(str == null || searchStr == null) && str.indexOf(searchStr) >= 0;
     }
 
     /**
@@ -923,10 +917,7 @@ public class StrUtils {
      * case or false if not or <code>null</code> string input
      */
     public static boolean containsIgnoreCase(String str, String searchStr) {
-        if (str == null || searchStr == null) {
-            return false;
-        }
-        return contains(str.toUpperCase(), searchStr.toUpperCase());
+        return !(str == null || searchStr == null) && contains(str.toUpperCase(), searchStr.toUpperCase());
     }
 
     // IndexOfAny chars
@@ -1065,10 +1056,7 @@ public class StrUtils {
      * @since 2.4
      */
     public static boolean containsAny(String str, String searchChars) {
-        if (searchChars == null) {
-            return false;
-        }
-        return containsAny(str, searchChars.toCharArray());
+        return searchChars != null && containsAny(str, searchChars.toCharArray());
     }
 
     // IndexOfAnyBut chars
@@ -1179,10 +1167,7 @@ public class StrUtils {
         if (str.length() == 0) {
             return true;
         }
-        if (valid.length == 0) {
-            return false;
-        }
-        return indexOfAnyBut(str, valid) == -1;
+        return valid.length != 0 && indexOfAnyBut(str, valid) == -1;
     }
 
     /**
@@ -1208,10 +1193,7 @@ public class StrUtils {
      * @since 2.0
      */
     public static boolean containsOnly(String str, String validChars) {
-        if (str == null || validChars == null) {
-            return false;
-        }
-        return containsOnly(str, validChars.toCharArray());
+        return !(str == null || validChars == null) && containsOnly(str, validChars.toCharArray());
     }
 
     // ContainsNone
@@ -1279,10 +1261,7 @@ public class StrUtils {
      * @since 2.0
      */
     public static boolean containsNone(String str, String invalidChars) {
-        if (str == null || invalidChars == null) {
-            return true;
-        }
-        return containsNone(str, invalidChars.toCharArray());
+        return str == null || invalidChars == null || containsNone(str, invalidChars.toCharArray());
     }
 
     // IndexOfAny strings
@@ -2774,7 +2753,7 @@ public class StrUtils {
         }
 
         bufSize *= ((array[startIndex] == null ? 16 : array[startIndex].toString().length()) + 1);
-        StringBuffer buf = new StringBuffer(bufSize);
+        StringBuilder buf = new StringBuilder(bufSize);
 
         for (int i = startIndex; i < endIndex; i++) {
             if (i > startIndex) {
@@ -2863,7 +2842,7 @@ public class StrUtils {
         bufSize *= ((array[startIndex] == null ? 16 : array[startIndex].toString().length())
                 + separator.length());
 
-        StringBuffer buf = new StringBuffer(bufSize);
+        StringBuilder buf = new StringBuilder(bufSize);
 
         for (int i = startIndex; i < endIndex; i++) {
             if (i > startIndex) {
@@ -3209,7 +3188,7 @@ public class StrUtils {
         int increase = replacement.length() - replLength;
         increase = (increase < 0 ? 0 : increase);
         increase *= (max < 0 ? 16 : (max > 64 ? 64 : max));
-        StringBuffer buf = new StringBuffer(text.length() + increase);
+        StringBuilder buf = new StringBuilder(text.length() + increase);
         while (end != -1) {
             buf.append(text.substring(start, end)).append(replacement);
             start = end + replLength;
@@ -3426,7 +3405,7 @@ public class StrUtils {
         // have upper-bound at 20% increase, then let Java take over
         increase = Math.min(increase, text.length() / 5);
 
-        StringBuffer buf = new StringBuffer(text.length() + increase);
+        StringBuilder buf = new StringBuilder(text.length() + increase);
 
         while (textIndex != -1) {
 
@@ -3550,7 +3529,7 @@ public class StrUtils {
         boolean modified = false;
         int replaceCharsLength = replaceChars.length();
         int strLength = str.length();
-        StringBuffer buf = new StringBuffer(strLength);
+        StringBuilder buf = new StringBuilder(strLength);
         for (int i = 0; i < strLength; i++) {
             char ch = str.charAt(i);
             int index = searchChars.indexOf(ch);
@@ -3843,7 +3822,7 @@ public class StrUtils {
                 }
                 return new String(output2);
             default:
-                StringBuffer buf = new StringBuffer(outputLength);
+                StringBuilder buf = new StringBuilder(outputLength);
                 for (int i = 0; i < repeat; i++) {
                     buf.append(str);
                 }
@@ -4389,7 +4368,7 @@ public class StrUtils {
         if (str == null || (strLen = str.length()) == 0) {
             return str;
         }
-        StringBuffer buffer = new StringBuffer(strLen);
+        StringBuilder buffer = new StringBuilder(strLen);
 
         char ch = 0;
         for (int i = 0; i < strLen; i++) {
@@ -4468,7 +4447,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if (Character.isLetter(str.charAt(i)) == false) {
+            if (!Character.isLetter(str.charAt(i))) {
                 return false;
             }
         }
@@ -4502,7 +4481,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if ((Character.isLetter(str.charAt(i)) == false) && (str.charAt(i) != ' ')) {
+            if ((!Character.isLetter(str.charAt(i))) && (str.charAt(i) != ' ')) {
                 return false;
             }
         }
@@ -4535,7 +4514,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if (Character.isLetterOrDigit(str.charAt(i)) == false) {
+            if (!Character.isLetterOrDigit(str.charAt(i))) {
                 return false;
             }
         }
@@ -4569,7 +4548,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if ((Character.isLetterOrDigit(str.charAt(i)) == false) && (str.charAt(i) != ' ')) {
+            if ((!Character.isLetterOrDigit(str.charAt(i))) && (str.charAt(i) != ' ')) {
                 return false;
             }
         }
@@ -4603,7 +4582,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if (Character.isDigit(str.charAt(i)) == false) {
+            if (!Character.isDigit(str.charAt(i))) {
                 return false;
             }
         }
@@ -4639,7 +4618,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if ((Character.isDigit(str.charAt(i)) == false) && (str.charAt(i) != ' ')) {
+            if ((!Character.isDigit(str.charAt(i))) && (str.charAt(i) != ' ')) {
                 return false;
             }
         }
@@ -4671,7 +4650,7 @@ public class StrUtils {
         }
         int sz = str.length();
         for (int i = 0; i < sz; i++) {
-            if ((Character.isWhitespace(str.charAt(i)) == false)) {
+            if ((!Character.isWhitespace(str.charAt(i)))) {
                 return false;
             }
         }
@@ -4762,7 +4741,6 @@ public class StrUtils {
         }
         return new StringBuffer(str).reverse().toString();
     }
-
 
     // Abbreviating
     //-----------------------------------------------------------------------
@@ -5295,10 +5273,7 @@ public class StrUtils {
         if (str == null || prefix == null) {
             return (str == null && prefix == null);
         }
-        if (prefix.length() > str.length()) {
-            return false;
-        }
-        return str.regionMatches(ignoreCase, 0, prefix, 0, prefix.length());
+        return prefix.length() <= str.length() && str.regionMatches(ignoreCase, 0, prefix, 0, prefix.length());
     }
 
     // endsWith

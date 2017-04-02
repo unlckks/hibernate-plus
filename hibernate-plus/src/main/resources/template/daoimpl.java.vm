@@ -1,4 +1,6 @@
-package ${package.DaoImpl};
+package
+
+    ${package.DaoImpl};
 
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +17,6 @@ import ${superDaoImplClassPackage};
  * @since ${date}
  */
 @Repository
-public class ${table.daoImplName} extends ${superDaoImplClass}<${po}> implements ${table.daoName} {
+public class ${table.daoImplName} extends${superDaoImplClass}<${po}> implements ${table.daoName} {
 
-
-}
+        }

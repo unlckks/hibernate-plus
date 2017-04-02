@@ -19,26 +19,27 @@ import com.baomidou.hibernateplus.entity.Convert;
  */
 @Table(name = "app_table")
 public class AppTestModel extends Convert {
-	private Integer id;
-	private String str;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "s_id")
-	public Integer getId() {
-		return id;
-	}
+    private Integer id;
+    private String str;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "s_id")
+    public Integer getId() {
+        return id;
+    }
 
-	@Column(name = "s_str")
-	public String getStr() {
-		return str;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setStr(String str) {
-		this.str = str;
-	}
+    @Column(name = "s_str")
+    public String getStr() {
+        return str;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
 }
